@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductShowCaseCarousel.MainPage"
+             xmlns:carousel="clr-namespace:Syncfusion.Maui.Carousel;assembly=Syncfusion.Maui.Carousel"
+             xmlns:viewModel="clr-namespace:ProductShowCaseCarousel">
+    
+    <ContentPage.BindingContext>
+        <viewModel:ProductViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="1,1">
+            <GradientStop Color="#EFF6FF" Offset="0" />
+            <GradientStop Color="#E0E7FF" Offset="0.5" />
+            <GradientStop Color="#F8FAFC" Offset="1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <Grid Padding="20">
+        <carousel:SfCarousel
+            ItemsSource="{Binding Products}"
+            SelectedIndex="2">
+            <carousel:SfCarousel.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="White"
+                            Stroke="#E5E7EB"
+                            StrokeThickness="1"
+                            StrokeShape="RoundRectangle 24"
+                            Margin="10">
+                        <Border.Shadow>
+                            <Shadow Brush="#000000"
+                                    Offset="2,4"
+                                    Radius="10"
+                                    Opacity="0.15"/>
+                        </Border.Shadow>
+                        <Grid>
+                            <Image Source="{Binding Image}"
+                                   Aspect="AspectFill" />
+                            <Border Background="#80000000"
+                                    VerticalOptions="End"
+                                    StrokeThickness="0">
+                                <Label Text="{Binding Name}"
+                                       TextColor="White"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       Padding="15"
+                                       HorizontalTextAlignment="Center"/>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </carousel:SfCarousel.ItemTemplate>
+        </carousel:SfCarousel>
+    </Grid>
+</ContentPage>
